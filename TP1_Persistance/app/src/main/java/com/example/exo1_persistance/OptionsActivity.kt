@@ -1,5 +1,7 @@
 package com.example.exo1_persistance
 
+import android.app.Application
+import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,13 +11,27 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_options.*
 import java.time.LocalDate
 
 class OptionsActivity : AppCompatActivity() {
+    private val sharedPrefFile = "kotlinsharedpreference"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_options)
+
+
+        val sharedPrefs = getSharedPreferences(sharedPrefFile, 0)
+
+        val editeur = sharedPrefs.edit()
+
+        var color = sharedPrefs.getString("color", Color.BLUE.toString())
+        if (color != null) {
+            optionLa.setBackgroundColor(color.toInt())
+        }
+
 
 
         val colors = resources.getStringArray(R.array.displays)
@@ -31,18 +47,27 @@ class OptionsActivity : AppCompatActivity() {
                 override fun onItemSelected(parent: AdapterView<*>,
                                             view: View, position: Int, id: Long) {
                     print("posiotionnn====>"+position)
-                    val current = LocalDate.now()
+
+
 
                     when(position){
                         0 -> {
-
+                            editeur.putString("color", Color.RED.toString() )
+                            editeur.commit()
+                            println("color ===> RED")
                         }
 
                         1 ->{
+                            editeur.putString("color",  Color.GREEN.toString() )
+                            editeur.commit()
+                            println("color ===> GRENN")
 
                         }
 
                         2-> {
+                            editeur.putString("color",  Color.BLUE.toString()  )
+                            editeur.commit()
+                            println("color ===> BLUE")
 
                         }
                     }
@@ -54,6 +79,15 @@ class OptionsActivity : AppCompatActivity() {
 
                 override fun onNothingSelected(parent: AdapterView<*>) {
                     // write code to perform some action
+                }
+            }
+
+
+
+            applayBtn.setOnClickListener{
+                color = sharedPrefs.getString("color", Color.BLUE.toString())
+                if (color != null) {
+                    optionLa.setBackgroundColor(color!!.toInt())
                 }
             }
         }

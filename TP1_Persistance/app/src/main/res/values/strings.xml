@@ -2,8 +2,8 @@
     <string name="app_name">Exo1_Persistance</string>
 
     <string-array name="displays">
-        <item>Blue</item>
-        <item>Green</item>
         <item>Red</item>
+        <item>Green</item>
+        <item>Blue</item>
     </string-array>
 </resources>
