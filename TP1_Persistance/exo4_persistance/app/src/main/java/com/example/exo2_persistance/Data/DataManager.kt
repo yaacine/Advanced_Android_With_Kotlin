@@ -18,7 +18,7 @@ import java.io.File
 
 
         lateinit var dbReference:AppDatabase
-        var interventionsList = arrayListOf<Intervention>()
+        var interventionsList = arrayListOf<Note>()
 
 
          fun getAll() {

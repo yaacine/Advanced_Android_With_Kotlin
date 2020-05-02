@@ -9,11 +9,14 @@ import java.util.*
 var gson = Gson()
 
 @Entity
-class Intervention (
-    @PrimaryKey var numero: String,
+class Note (
+
+    @PrimaryKey(autoGenerate = true) var id: Int,
+
     @ColumnInfo (name = "date") var date : String,
-    @ColumnInfo(name = "nomPlombier") var nomPmobier:String,
-    @ColumnInfo(name = "type") var type:String
+    @ColumnInfo(name = "title") var titile:String,
+    @ColumnInfo(name = "color") var color:String,
+    @ColumnInfo(name = "text") var text:String
 )
 
 
