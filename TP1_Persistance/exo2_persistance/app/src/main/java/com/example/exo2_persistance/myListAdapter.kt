@@ -48,6 +48,8 @@ class MyListAdapter(var mCtx:Context , var resource:Int,var items:List<Intervent
 
            // Set a click listener for button widget
         editBtn.setOnClickListener{
+
+            /*
             // Initialize a new layout inflater instance
             val inflater:LayoutInflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
@@ -106,7 +108,7 @@ class MyListAdapter(var mCtx:Context , var resource:Int,var items:List<Intervent
                 Gravity.CENTER, // Exact position of layout to display popup
                 0, // X offset
                 0 // Y offset
-            )
+            )*/
         }
 
         return view

@@ -42,8 +42,8 @@ class MainActivity : AppCompatActivity() {
             var correctDate = elements[2]+"-"+elements[1]+"-"+elements[0]
             println("correctedate ===>" +correctDate)
             println("plombier ===>" +editText.text.toString() )
-
-            val newItem = Intervention(numero = "10", nomPmobier =  editText.text.toString() , date = correctDate.toString(), type = typeIntervantion.text.toString() )
+            val rnds = (0..10000).random()
+            val newItem = Intervention(numero = rnds.toString(), nomPmobier =  editText.text.toString() , date = correctDate.toString(), type = typeIntervantion.text.toString() )
             DataManager.interventionsList.add(newItem)
 
             listView.adapter =  adapter
