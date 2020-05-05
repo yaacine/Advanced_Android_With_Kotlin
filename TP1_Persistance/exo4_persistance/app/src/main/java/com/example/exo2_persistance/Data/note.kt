@@ -11,8 +11,7 @@ var gson = Gson()
 @Entity
 class Note (
 
-    @PrimaryKey(autoGenerate = true) var id: Int,
-
+    @PrimaryKey(autoGenerate = true) var id: Int ,
     @ColumnInfo (name = "date") var date : String,
     @ColumnInfo(name = "title") var titile:String,
     @ColumnInfo(name = "color") var color:String,
