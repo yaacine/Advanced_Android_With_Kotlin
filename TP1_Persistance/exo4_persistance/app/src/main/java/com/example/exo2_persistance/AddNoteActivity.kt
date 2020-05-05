@@ -57,10 +57,6 @@ class AddNoteActivity : AppCompatActivity() {
             finish()
         }
 
-        var values = ContentValues()
-        values.put("Title", titleEt.text.toString())
-        values.put("Description", descEt.text.toString())
-
 
     }
 }

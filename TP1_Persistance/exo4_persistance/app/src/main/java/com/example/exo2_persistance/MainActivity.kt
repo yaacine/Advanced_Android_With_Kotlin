@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         notesLv.adapter = myNotesAdapter
         //Load from DB
         LoadQuery("%")
-
+        myNotesAdapter.notifyDataSetChanged()
 
         }
 
@@ -59,6 +59,7 @@ class MainActivity : AppCompatActivity() {
         GlobalScope.launch {
 
             var myDataList = DataManager.dbReference.interventionDao().getAll()
+            listNotes.clear()
             listNotes.addAll(myDataList)
         }.invokeOnCompletion {
 
