@@ -1,0 +1,2 @@
+rootProject.name='Exo6_room'
+include ':app'
