@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:fillViewport="true"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".activities.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:fillViewport="true"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".activities.MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="Filtrez les séances par"
+        android:textAlignment="center"
+        android:textColor="#002187"
+        android:textSize="32sp" />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jour"
+        android:layout_margin="15dp"
+        android:id="@+id/btn_jour"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Semaine"
+        android:layout_margin="15dp"
+        android:id="@+id/btn_semaine"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="module"
+        android:layout_margin="15dp"
+        android:id="@+id/btn_module"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Group"
+            android:layout_margin="15dp"
+            android:id="@+id/btn_group"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="enseignant"
+        android:layout_margin="15dp"
+        android:id="@+id/btn_enseignat"/>
+
+        <Button
+            android:id="@+id/btn_salle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:text="salle" />
+
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="Data management"
+        android:textAlignment="center"
+        android:textColor="#002187"
+        android:textSize="32sp" />
+    <Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="import"
+    android:layout_margin="15dp"
+    android:id="@+id/btn_import"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="reset"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+
+        android:id="@+id/btn_reset"/>
+
+
+    </LinearLayout>
+
+</ScrollView>
