@@ -48,6 +48,7 @@ class MyListAdapter(
 
                 var myDataNewList =  DataManager.dbReference.interventionDao().getAll()
                 DataManager.interventionsList.clear()
+                println("deleted ====>"+ myDataNewList.size)
                 DataManager.interventionsList.addAll(myDataNewList)
 
             }.invokeOnCompletion {
