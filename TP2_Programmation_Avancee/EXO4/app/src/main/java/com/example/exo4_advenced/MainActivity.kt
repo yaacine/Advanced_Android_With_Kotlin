@@ -33,18 +33,10 @@ class MainActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<ArrayList<Todo>>, response: retrofit2.Response<ArrayList<Todo>>?) {
                     if ((response != null) && (response.code() == 200)) {
 
-                        var t: Todo = Todo()
-                        //todosList.add(t)
-
                         todosListview.adapter = adapter
-                        var todosList1 = ArrayList(response.body()!!.subList(0,10))
+                        var todosList1 = ArrayList(response.body()!!.subList(0,30))
                         todosList.addAll(todosList1)
-                       // todosList = response.body()!!.subList(0,10) as ArrayList<Todo>
-
                         adapter.notifyDataSetChanged()
-                        println("response" + todosList.size)
-                        println("todo is ====> "+todosList[0].title)
-
                         Toast.makeText(this@MainActivity, "Succès", Toast.LENGTH_LONG).show()
 
                     }

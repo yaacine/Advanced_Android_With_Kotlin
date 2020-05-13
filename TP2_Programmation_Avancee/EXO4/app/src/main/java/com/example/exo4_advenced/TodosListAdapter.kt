@@ -37,6 +37,11 @@ class TodosListAdapter(
         if(todo?.completed == true) statusBtn.text = "T"
         else statusBtn.text = "F"
 
+        statusBtn.setOnClickListener {
+            todo?.completed = !todo?.completed!!
+            if(todo?.completed == true) statusBtn.text = "T"
+            else statusBtn.text = "F"
+        }
 
 
         return view
