@@ -21,7 +21,7 @@ class TodosListAdapter(
         val view: View = layoutInflater.inflate(resource, null)
         val imageView: ImageView = view.findViewById(R.id.iconIv)
         var idTodo: TextView = view.findViewById(R.id.idTodo)
-        var idTodoUser: TextView = view.findViewById(R.id.idTodo)
+        var idTodoUser: TextView = view.findViewById(R.id.idTodoUser)
         var titleTodo: TextView = view.findViewById(R.id.titleTodo)
         var statusBtn: TextView = view.findViewById(R.id.statusBtn)
 
@@ -29,8 +29,8 @@ class TodosListAdapter(
 
         //       imageView.setImageDrawable(mCtx.resources.getDrawable(1,null))
 
-        idTodoUser.text = todo?.userId?.toUpperCase()
-        idTodo.text = todo?.id?.toUpperCase()
+        idTodoUser.text = "User :"+ todo?.userId?.toUpperCase()
+        idTodo.text = "Todo n°: " +todo?.id?.toUpperCase()
         titleTodo.text = todo?.title?.toUpperCase()
 
 

@@ -34,10 +34,13 @@ class MainActivity : AppCompatActivity() {
                     if ((response != null) && (response.code() == 200)) {
 
                         var t: Todo = Todo()
-                        todosList.add(t)
+                        //todosList.add(t)
+
                         todosListview.adapter = adapter
-                        todosList = ArrayList(response.body()!!.subList(0,10))
-                        //todosList = response.body()!!.subList(0,10) as ArrayList<Todo>
+                        var todosList1 = ArrayList(response.body()!!.subList(0,10))
+                        todosList.addAll(todosList1)
+                       // todosList = response.body()!!.subList(0,10) as ArrayList<Todo>
+
                         adapter.notifyDataSetChanged()
                         println("response" + todosList.size)
                         println("todo is ====> "+todosList[0].title)
