@@ -5,6 +5,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.BroadcastReceiver
+import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -28,7 +29,10 @@ class TestReceiver: BroadcastReceiver() {
         val pIntent = PendingIntent.getActivity(context, System.currentTimeMillis().toInt(), intent, 0)
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-        var  sound :Uri = Uri.parse("android.resource://" + context.getPackageName() + "/"+ R.raw.azan1)
+       // var  sound :Uri = Uri.parse("android.resource://" + context.getPackageName() + "/"+ R.raw.azan1)
+        var  sound :Uri =Uri.parse(
+            ContentResolver.SCHEME_ANDROID_RESOURCE
+                + "://" + context.getPackageName() + "/"+ R.raw.azan1)
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             val mChannel = NotificationChannel(

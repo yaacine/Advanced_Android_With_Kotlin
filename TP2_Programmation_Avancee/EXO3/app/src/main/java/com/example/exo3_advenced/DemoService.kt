@@ -4,6 +4,7 @@ import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.media.MediaPlayer
+import android.net.Uri
 
 class DemoService  : IntentService("DemoService") {
 
@@ -18,14 +19,24 @@ class DemoService  : IntentService("DemoService") {
             val builder = builder(notificationManager, pIntent)
             var noti = builder!!.build()
 
-            var mediaPlayer = MediaPlayer.create(this, R.raw.azan1)
+            var  sound : Uri = Uri.parse("android.resource://" + "com.example.exo3_advenced" + "/"+ R.raw.azan1)
+
+
+          //  var mediaPlayer = MediaPlayer.create(this, R.raw.azan1)
+            var mediaPlayer = MediaPlayer.create(this,sound)
             mediaPlayer?.setOnPreparedListener({
                 println("ready")
             })
 
-            Thread.sleep(6000)
 
-           // mediaPlayer.start()
+
+        //    var  sound : Uri = Uri.parse("android.resource://" + "com.example.exo3_advenced" + "/"+ R.raw.azan1)
+
+           // noti.sound= sound
+                // noti.defaults = Notification.DEFAULT_LIGHTS or Notification.DEFAULT_VIBRATE
+
+            Thread.sleep(6000)
+            mediaPlayer.start()
             notificationManager.notify(notificationID, noti)
             Thread.sleep(6000)
             builder.setProgress(100, 33, false)
@@ -46,7 +57,10 @@ class DemoService  : IntentService("DemoService") {
 
     }
 
+
     private fun builder(nm: NotificationManager, pi: PendingIntent): Notification.Builder? {
+        var  sound : Uri = Uri.parse("android.resource://" + "com.example.exo3_advenced" + "/"+ R.raw.azan1)
+
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             val mChannel = NotificationChannel(
                 "ch00", "ch00", NotificationManager.IMPORTANCE_HIGH)
@@ -58,6 +72,7 @@ class DemoService  : IntentService("DemoService") {
                 .setOngoing(true)
                 .setProgress(100, 0, false)
                 .setAutoCancel(true)
+                .setSound(sound)
             return builder
 
 
@@ -70,6 +85,8 @@ class DemoService  : IntentService("DemoService") {
                 .setOngoing(true)
                 .setProgress(100, 0, false)
                 .setAutoCancel(true)
+                .setSound(sound)
+
             return builder
 
         }
