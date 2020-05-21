@@ -7,19 +7,13 @@
     tools:context=".MainActivity">
 
     <Button
-        android:text="Envoyer une diffusion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/btnSend"
+        android:layout_width="265dp"
+        android:layout_height="92dp"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="35dp"
-        android:id="@+id/btnSend" />
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="73dp"
+        android:layout_marginTop="242dp"
+        android:text="Lancer le service du Adan" />
 
-    <Button
-        android:text="Démarrer Service"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnSend"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="19dp"
-        android:id="@+id/btnStartService" />
 </RelativeLayout>

@@ -26,12 +26,15 @@ class MainActivity : AppCompatActivity() {
         btnSend.setOnClickListener {
 
             val intent = Intent(this , AdanService::class.java)
-            startService(intent)
 
+            //startForegroundService(intent)
+            startService(intent)
 
         }
 
 
-        btnStartService.setOnClickListener { DemoService.demarrerService(context) }
+
+
+
     }
 }

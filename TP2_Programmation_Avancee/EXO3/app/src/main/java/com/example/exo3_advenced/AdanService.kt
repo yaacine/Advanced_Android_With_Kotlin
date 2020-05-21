@@ -8,6 +8,7 @@ import android.media.AudioAttributes
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.IBinder
+import java.util.*
 
 class AdanService : Service() {
 
@@ -36,6 +37,7 @@ class AdanService : Service() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
 
+        /*
 
         val runnable = Runnable {
 
@@ -88,6 +90,7 @@ class AdanService : Service() {
 
         val thread = Thread(runnable)
         thread.start()
+*/
 
 
         // reciever to handle adan sound
@@ -99,12 +102,26 @@ class AdanService : Service() {
         context.sendBroadcast(i)
 
 
-        /*
+        // bringing adan data
+        var adans = arrayListOf<Int>(
+            AdanData.FajrSEC,
+            AdanData.DohrSEC,
+            AdanData.AsrSEC,
+            AdanData.MaghribSEC,
+            AdanData.IshaSEC
+        )
+
+
         while (true) {
             println("started while")
 
+            val currentTime = Calendar.getInstance()
+            var currentTimeSEC =
+                (currentTime.get(Calendar.HOUR) * 60 + currentTime.get(Calendar.MINUTE)) * 60
+            println(currentTime)
+            if (currentTimeSEC in adans) {
 
-            if (true) {
+
                 try {
                     val notificationManager =
                         getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -125,7 +142,7 @@ class AdanService : Service() {
                     var noti = builder!!.build()
                     noti.sound = sound
                     noti.defaults = Notification.DEFAULT_LIGHTS or Notification.DEFAULT_VIBRATE
-                    builder.setContentText("It's time for something prayer!")
+                    builder.setContentText("It's time for prayer!")
                     noti = builder.build()
 
 
@@ -139,12 +156,12 @@ class AdanService : Service() {
                 }
             }
             println("started service")
-            Thread.sleep(6000)
+            Thread.sleep(60000)
             println("started service stop waiting")
 
 
         }
-*/
+
 
         return START_STICKY
         //return super.onStartCommand(intent, flags, startId)
@@ -165,6 +182,7 @@ class AdanService : Service() {
                 it.vibrationPattern = longArrayOf(100, 200, 300, 400, 500, 400, 300, 200, 400)
                 it
             }
+
 
 
             val audioAttributes = AudioAttributes.Builder()
