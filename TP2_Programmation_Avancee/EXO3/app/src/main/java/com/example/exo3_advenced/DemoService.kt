@@ -8,41 +8,45 @@ import android.media.MediaPlayer
 import android.net.Uri
 
 
-class DemoService  : IntentService("DemoService" ) {
-
+class DemoService : IntentService("DemoService") {
 
 
     override fun onHandleIntent(intent: Intent?) {
         try {
-            val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val notificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             val notificationID = 1001
-            val pIntent = PendingIntent.getService(this, System.currentTimeMillis().toInt(), intent!!, 0)
+            val pIntent =
+                PendingIntent.getService(this, System.currentTimeMillis().toInt(), intent!!, 0)
 
             val builder = builder(notificationManager, pIntent)
             var noti = builder!!.build()
 
-            var  sound : Uri = Uri.parse("android.resource://" + "com.example.exo3_advenced" + "/"+ R.raw.azan1)
+            var sound: Uri =
+                Uri.parse("android.resource://" + "com.example.exo3_advenced" + "/" + R.raw.azan1)
 
 
-          //  var mediaPlayer = MediaPlayer.create(this, R.raw.azan1)
-            var mediaPlayer = MediaPlayer.create(this,sound)
+            //  var mediaPlayer = MediaPlayer.create(this, R.raw.azan1)
+            var mediaPlayer = MediaPlayer.create(this, sound)
             mediaPlayer?.setOnPreparedListener({
                 println("ready")
             })
 
 
+            while (true) {
 
-        //    var  sound : Uri = Uri.parse("android.resource://" + "com.example.exo3_advenced" + "/"+ R.raw.azan1)
+            }
+            //    var  sound : Uri = Uri.parse("android.resource://" + "com.example.exo3_advenced" + "/"+ R.raw.azan1)
 
-           // noti.sound= sound
-                // noti.defaults = Notification.DEFAULT_LIGHTS or Notification.DEFAULT_VIBRATE
+            // noti.sound= sound
+            // noti.defaults = Notification.DEFAULT_LIGHTS or Notification.DEFAULT_VIBRATE
 
             //Thread.sleep(6000)
-             mediaPlayer.start()
+            mediaPlayer.start()
 
             //noti.sound = sound
             notificationManager.notify(notificationID, noti)
-          /*
+
             Thread.sleep(6000)
             builder.setProgress(100, 33, false)
             noti = builder.build()
@@ -55,7 +59,7 @@ class DemoService  : IntentService("DemoService" ) {
             builder.setProgress(100, 100, false).setContentText("Terminé !")
             noti = builder.build()
             notificationManager.notify(notificationID, noti)
-           */
+
 
         } catch (ex: Exception) {
 
@@ -65,12 +69,14 @@ class DemoService  : IntentService("DemoService" ) {
 
 
     private fun builder(nm: NotificationManager, pi: PendingIntent): Notification.Builder? {
-        var  sound : Uri = Uri.parse("android.resource://" + "com.example.exo3_advenced" + "/"+ R.raw.azan1)
+        var sound: Uri =
+            Uri.parse("android.resource://" + "com.example.exo3_advenced" + "/" + R.raw.azan1)
 
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             val mChannel = NotificationChannel(
-                "ch00", "ch00", NotificationManager.IMPORTANCE_HIGH)
+                "ch00", "ch00", NotificationManager.IMPORTANCE_HIGH
+            )
 
             println("flutter")
             val audioAttributes = AudioAttributes.Builder()
@@ -78,12 +84,13 @@ class DemoService  : IntentService("DemoService" ) {
                 .setUsage(AudioAttributes.USAGE_ALARM)
                 .build()
 
-            mChannel.setSound(sound,audioAttributes);
+            mChannel.setSound(sound, audioAttributes);
             nm.createNotificationChannel(mChannel)
 
-            val builder = Notification.Builder(this,"ch00")
+            val builder = Notification.Builder(this, "ch00")
                 .setContentTitle("Service")
-                .setContentText("Notification à partir d'un service").setSmallIcon(R.drawable.ic_launcher_background)
+                .setContentText("Notification à partir d'un service")
+                .setSmallIcon(R.drawable.ic_launcher_background)
                 .setContentIntent(pi).setAutoCancel(true)
                 .setOngoing(true)
                 .setProgress(100, 0, false)
@@ -93,11 +100,12 @@ class DemoService  : IntentService("DemoService" ) {
             return builder
 
 
-        }else{
+        } else {
 
             val builder = Notification.Builder(this)
                 .setContentTitle("Service")
-                .setContentText("Notification à partir d'un service").setSmallIcon(R.drawable.ic_launcher_background)
+                .setContentText("Notification à partir d'un service")
+                .setSmallIcon(R.drawable.ic_launcher_background)
                 .setContentIntent(pi).setAutoCancel(true)
                 .setOngoing(true)
                 .setProgress(100, 0, false)
